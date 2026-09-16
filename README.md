@@ -11,15 +11,3 @@ Protótipo em Java + Spring Boot de uma plataforma educativa, lúdica e acessív
 5. **Entrevista sem medo** — preparação, respostas comuns, postura, perguntas para a empresa e simulação.
 6. **Primeiro dia** — documentos, pontualidade, comunicação e direitos básicos no início do trabalho.
 7. **Jornada de acessibilidade** — dicas para pessoas com deficiência, baixa escolaridade ou pouca experiência digital.
-
-## Executar
-
-Requisitos: Java 17 ou superior e Maven 3.9+.
-
-```bash
-mvn spring-boot:run
-```
-
-Depois, acesse <http://localhost:8080>.
-
-API disponível em `GET /api/modules`.
