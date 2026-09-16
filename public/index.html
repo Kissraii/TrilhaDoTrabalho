@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aprenda a procurar emprego com mais segurança, passo a passo e jogando." />
+  <title>Trilha do Trabalho</title>
+  <style>
+    :root {
+      --ink: #19324a;
+      --muted: #607287;
+      --cream: #fffaf0;
+      --paper: #fff;
+      --yellow: #ffc857;
+      --coral: #f47c6b;
+      --teal: #4fb7a5;
+      --line: #e8e1d7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 0;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: auto;
+      padding: 0 28px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      background: var(--yellow);
+      border-radius: 14px;
+      transform: rotate(-6deg);
+      font-size: 22px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    nav a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 48px;
+      align-items: center;
+      padding: 68px 0 76px;
+    }
+
+    .eyebrow {
+      color: #bc6d19;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    h1 {
+      font-size: clamp(42px, 5.3vw, 74px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin: 16px 0 22px;
+      max-width: 680px;
+    }
+
+    h1 span {
+      color: var(--coral);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .primary {
+      background: var(--ink);
+      color: white;
+      padding: 15px 21px;
+      border-radius: 14px;
+      font-weight: 750;
+      box-shadow: 0 7px 0 #102335;
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .primary:hover {
+      transform: translateY(2px);
+      box-shadow: 0 5px 0 #102335;
+    }
+
+    .secondary {
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      background: white;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 350px;
+      background: #f7d98d;
+      border-radius: 34px;
+      padding: 28px;
+      overflow: hidden;
+      box-shadow: 15px 15px 0 rgba(244, 124, 107, .25);
+    }
+
+    .hero-card:before,
+    .hero-card:after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: #fff4cd;
+      width: 190px;
+      height: 190px;
+      right: -65px;
+      top: -70px;
+    }
+
+    .hero-card:after {
+      width: 120px;
+      height: 120px;
+      left: -45px;
+      bottom: -44px;
+      background: #f4b47e;
+    }
+
+    .map {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .map-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .sticker {
+      background: white;
+      padding: 8px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 4px 0 rgba(25, 50, 74, .12);
+    }
+
+    .path {
+      position: relative;
+      margin-top: 32px;
+      height: 180px;
+    }
+
+    .path svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .step {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      background: white;
+      border: 5px solid var(--ink);
+      border-radius: 50%;
+      font-size: 25px;
+      box-shadow: 0 5px 0 var(--ink);
+    }
+
+    .step.one {
+      left: 7%;
+      top: 57%;
+    }
+
+    .step.two {
+      left: 40%;
+      top: 17%;
+    }
+
+    .step.three {
+      right: 8%;
+      top: 58%;
+    }
+
+    .hero-card small {
+      position: relative;
+      z-index: 1;
+      color: #7d5a25;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 40px 0 84px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -.04em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .progress {
+      width: 230px;
+    }
+
+    .progress-line {
+      height: 8px;
+      background: #e9e3d8;
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-line i {
+      display: block;
+      width: 20%;
+      height: 100%;
+      background: var(--teal);
+      border-radius: inherit;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .module {
+      background: var(--paper);
+      padding: 20px;
+      min-height: 230px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .18s, box-shadow .18s;
+    }
+
+    .module:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(25, 50, 74, .08);
+    }
+
+    .module-icon {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .module h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      letter-spacing: -.02em;
+    }
+
+    .module p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .module-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .play {
+      color: var(--coral);
+    }
+
+    .quiz {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .quiz-intro {
+      background: var(--ink);
+      color: white;
+      border-radius: 24px;
+      padding: 34px;
+    }
+
+    .quiz-intro p {
+      color: #b6c5d3;
+      line-height: 1.6;
+    }
+
+    .badge {
+      color: #f9d77d;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .quiz-box {
+      background: white;
+      border: 1px solid var(--line);
+      padding: 32px;
+      border-radius: 24px;
+    }
+
+    .quiz-box h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .answer {
+      text-align: left;
+      padding: 15px;
+      background: #faf8f3;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .answer:hover {
+      border-color: var(--coral);
+    }
+
+    .answer.correct {
+      background: #e1f4ee;
+      border-color: var(--teal);
+    }
+
+    .answer.wrong {
+      background: #ffebe7;
+      border-color: var(--coral);
+    }
+
+    .feedback {
+      min-height: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width:850px) {
+      nav {
+        display: none;
+      }
+
+      .hero,
+      .quiz {
+        grid-template-columns: 1fr;
+      }
+
+      .modules {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+    }
+
+    @media (max-width:480px) {
+      .wrap {
+        padding: 0 18px;
+      }
+
+      .modules {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .progress {
+        margin-top: 18px;
+        width: 100%;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-card {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#inicio"><span class="brand-mark">✦</span><span>Trilha do Trabalho</span></a>
+      <nav><a href="#trilha">Minha trilha</a><a href="#quiz">Perguntas</a><a href="#ajuda">Preciso de ajuda</a></nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Aprender fazendo</div>
+          <h1>Seu próximo passo começa <span>aqui.</span></h1>
+          <p>Uma trilha leve, prática e segura para aprender a encontrar vagas, preparar seu currículo e conversar com
+            empresas — no seu ritmo.</p>
+          <div class="actions"><a class="primary" href="#trilha">Começar a trilha →</a><a class="secondary"
+              href="#quiz">Testar meus conhecimentos</a></div>
+        </div>
+        <div class="hero-card" aria-label="Mapa ilustrado da trilha de aprendizagem">
+          <div class="map">
+            <div class="map-top"><span class="sticker">Nível 1 · Começando</span><span style="font-size:28px">☀️</span>
+            </div>
+            <div class="path"><svg viewBox="0 0 400 150" fill="none">
+                <path d="M30 115 C110 145 115 10 200 42 S300 130 370 58" stroke="#19324a" stroke-width="5"
+                  stroke-linecap="round" stroke-dasharray="3 13" />
+              </svg><span class="step one">🔎</span><span class="step two">📝</span><span class="step three">🎤</span>
+            </div><small>3 passos já desenhados para você avançar.</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="trilha">
+        <div class="section-head">
+          <div>
+            <h2>Escolha seu próximo desafio</h2>
+            <p>Pequenas vitórias constroem grandes caminhos.</p>
+          </div>
+          <div class="progress"><strong>1 de 5 módulos</strong>
+            <div class="progress-line"><i></i></div>
+          </div>
+        </div>
+        <div class="modules" id="modules"></div>
+      </section>
+
+      <section id="quiz">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="badge">Desafio relâmpago · +20 pontos</div>
+            <h2 style="margin-top:20px">Você reconhece uma vaga segura?</h2>
+            <p>Responda uma pergunta rápida e descubra uma dica importante para sua jornada.</p>
+          </div>
+          <div class="quiz-box">
+            <h3>Qual situação merece atenção?</h3>
+            <div class="answers" id="answers"><button class="answer" data-correct="false">A empresa explica bem a
+                função.</button><button class="answer" data-correct="false">O contato usa um e-mail
+                oficial.</button><button class="answer" data-correct="true">Pedem pagamento para liberar a
+                contratação.</button></div>
+            <div class="feedback" id="feedback" role="status"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="ajuda">Trilha do Trabalho · Informação para abrir caminhos com mais segurança.</footer>
+  </div>
+  <script>
+    const fallback = [
+      { icon: '🗺️', title: 'Mapa das oportunidades', subtitle: 'Aprenda onde encontrar vagas de verdade', points: 120 },
+      { icon: '🕵🏽', title: 'Detetive dos golpes', subtitle: 'Identifique sinais de alerta em anúncios', points: 150 },
+      { icon: '🚀', title: 'Currículo turbo', subtitle: 'Monte um currículo simples e objetivo', points: 180 },
+      { icon: '💬', title: 'Mensagem que abre portas', subtitle: 'Pratique contatos profissionais com respeito', points: 160 },
+      { icon: '🎤', title: 'Entrevista sem medo', subtitle: 'Treine respostas e prepare suas perguntas', points: 200 }
+    ];
+    function renderModules(modules) { document.querySelector('#modules').innerHTML = modules.map((m, i) => `<article class="module"><div class="module-icon">${m.icon}</div><h3>${m.title}</h3><p>${m.subtitle}</p><div class="module-footer"><span>${m.points} pontos</span><span class="play">${i === 0 ? 'Começar →' : 'Em breve'}</span></div></article>`).join(''); }
+    fetch('/api/modules').then(r => r.ok ? r.json() : Promise.reject()).then(renderModules).catch(() => renderModules(fallback));
+    document.querySelectorAll('.answer').forEach(button => button.addEventListener('click', () => { const correct = button.dataset.correct === 'true'; document.querySelectorAll('.answer').forEach(b => b.disabled = true); button.classList.add(correct ? 'correct' : 'wrong'); document.querySelector('#feedback').textContent = correct ? 'Muito bem! Nunca pague para participar de um processo seletivo. +20 pontos para você.' : 'Quase! Observe pedidos de pagamento: eles são um sinal comum de golpe.'; }));
+  </script>
+</body>
+
+</html>
