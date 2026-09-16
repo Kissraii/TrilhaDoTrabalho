@@ -1,25 +1,65 @@
 # Trilha do Trabalho
 
-Protótipo em Java + Spring Boot de uma plataforma educativa, lúdica e acessível para ajudar pessoas a procurar emprego com mais segurança.
+Projeto educativo com **Java + Spring Boot** e frontend HTML otimizado com **Gulp**.
 
-## Módulos planejados
+## Trilhas
 
-1. **Mapa das oportunidades** — como encontrar vagas em sites, aplicativos, redes profissionais e serviços públicos.
-2. **Detetive dos golpes** — identificação de anúncios falsos, pedidos de pagamento, links suspeitos e coleta indevida de dados.
-3. **Currículo turbo** — construção de currículo simples, objetivo, adaptado à vaga e compatível com filtros de seleção.
-4. **Mensagem que abre portas** — prática de mensagens profissionais para recrutadores, empresas e contatos de indicação.
-5. **Entrevista sem medo** — preparação, respostas comuns, postura, perguntas para a empresa e simulação.
-6. **Primeiro dia** — documentos, pontualidade, comunicação e direitos básicos no início do trabalho.
-7. **Jornada de acessibilidade** — dicas para pessoas com deficiência, baixa escolaridade ou pouca experiência digital.
+1. Mapa das oportunidades
+2. Detetive dos golpes
+3. Currículo turbo
+4. Mensagem que abre portas
+5. Entrevista sem medo
 
-## Executar
+## Estrutura
 
-Requisitos: Java 17 ou superior e Maven 3.9+.
+- `src/main/java/` — backend Java Spring Boot.
+- `src/main/resources/static/index.html` — página servida pelo Spring Boot.
+- `web/index.html` — fonte do frontend para a Vercel.
+- `gulpfile.js` — limpa e gera a pasta `dist`.
+- `dist/` — versão final otimizada para publicação.
+- `package.json` — comandos do frontend.
+
+## Rodar com Java
+
+Requisitos: Java 17 ou superior e Maven.
 
 ```bash
 mvn spring-boot:run
 ```
 
-Depois, acesse <http://localhost:8080>.
+Acesse <http://localhost:8080>.
 
-API disponível em `GET /api/modules`.
+## Gerar a pasta dist
+
+Requisitos: Node.js e npm.
+
+```bash
+npm install
+npm run build
+```
+
+O arquivo final será:
+
+```text
+dist/index.html
+```
+
+Para testar a versão gerada localmente:
+
+```bash
+npx serve dist
+```
+
+## Publicar na Vercel
+
+Conecte o repositório do GitHub e use:
+
+```text
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+```
+
+O arquivo `vercel.json` já contém essas configurações. A Vercel publica somente o conteúdo de `dist`, evitando enviar `target` e `node_modules`.
+
+A Vercel executa apenas o frontend. Para executar a API Java `/api/modules`, publique o Spring Boot em Render, Railway ou outro serviço Java.
