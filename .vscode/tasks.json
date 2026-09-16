@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Executar Trilha do Trabalho",
+      "type": "shell",
+      "command": "mvn spring-boot:run",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Compilar projeto",
+      "type": "shell",
+      "command": "mvn clean package",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
